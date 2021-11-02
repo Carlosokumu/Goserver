@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"server.go/models"
 )
 
 func main() {
@@ -13,6 +14,8 @@ func main() {
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
+	//Create a  database  connection  in the main Goroutine
+	models.ConnectDatabase()
 
 	r.Run()
 }
