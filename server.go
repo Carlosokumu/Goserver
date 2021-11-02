@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"server.go/controllers"
 	"server.go/models"
 )
 
@@ -16,6 +17,6 @@ func main() {
 	})
 	//Create a  database  connection  in the main Goroutine
 	models.ConnectDatabase()
-
+	r.GET("/books", controllers.FindBooks)
 	r.Run()
 }
